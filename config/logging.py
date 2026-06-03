@@ -35,7 +35,7 @@ def configure_loguru():
             {
                 "sink": sys.stderr,
                 "level": "INFO",
-                "format": "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | {thread.name} | <level>{level}</level> | "
+                "format": "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | <level>{level}</level> | "
                           "<cyan>{module}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>",
             },
             {"sink": log_file_path, "rotation": "500 MB", "encoding": "utf-8"},
