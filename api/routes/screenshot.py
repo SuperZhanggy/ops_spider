@@ -5,8 +5,8 @@ from io import BytesIO
 
 router = APIRouter()
 
-@router.get("/screenshot")
-def screenshot(url: str = Query(..., description="Grafana 看板 URL")):
+@router.get("/grafana")
+async def grafana_dashboard(url: str = Query(..., description="Grafana 看板 URL")):
     try:
         # kiosk模式会隐藏：顶部导航 左侧菜单 用户菜单
         if not url.endswith("&kiosk"):

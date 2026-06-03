@@ -372,5 +372,4 @@ def load_user_config():
     return config
 
 
-if __name__ == '__main__':
-    print(BASE_DIR)
+settings = load_user_config()

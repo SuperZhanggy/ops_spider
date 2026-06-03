@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.routes import grafana
+from api.routes import screenshot, authentication
 
 app = FastAPI(title="Playwright Service", version="0.1.0")
 
@@ -12,7 +12,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(grafana.router)
+app.include_router(authentication.router, prefix="/api/auth")
+app.include_router(screenshot.router, prefix="/api/screenshot")
 
 
 @app.get("/health")

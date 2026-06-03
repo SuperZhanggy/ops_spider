@@ -1,8 +1,12 @@
 import logging
+import os
+import sys
 from types import FrameType
 from typing import cast
-
+from config.conf import settings
 from loguru import logger
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class InterceptHandler(logging.Handler):
@@ -22,3 +26,30 @@ class InterceptHandler(logging.Handler):
         logger.opt(depth=depth, exception=record.exc_info).log(
             level, record.getMessage(),
         )
+
+
+LOGGING_LEVEL = logging.DEBUG if settings.DEBUG else logging.INFO
+LOGGERS = ("uvicorn.asgi", "uvicorn.access")
+
+logging.getLogger().handlers = [InterceptHandler()]
+for logger_name in LOGGERS:
+    logging_logger = logging.getLogger(logger_name)
+    logging_logger.handlers = [InterceptHandler(level=LOGGING_LEVEL)]
+
+log_file_path = os.path.join(BASE_DIR, 'logs/ops_spider.log')
+err_log_file_path = os.path.join(BASE_DIR, 'logs/ops_spider.err.log')
+
+# 埋点日志格式化
+format_buried_logs = "<green>{time:YYYY-mm-dd HH:mm:ss.SSS}</green> <level>{message}</level>"
+
+loguru_config = {
+    "handlers": [
+        {"sink": sys.stderr, "level": "INFO",
+         "format": "<green>{time:YYYY-mm-dd HH:mm:ss.SSS}</green> | {thread.name} | <level>{level}</level> | "
+                   "<cyan>{module}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"},
+        {"sink": log_file_path, "rotation": "500 MB", "encoding": 'utf-8'},
+        {"sink": err_log_file_path, "serialize": True, "level": 'ERROR', "rotation": "500 MB",
+         "encoding": 'utf-8'},
+    ],
+}
+logger.configure(**loguru_config)
