@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Query, HTTPException
 from fastapi.responses import StreamingResponse
-from playwright.sync_api import sync_playwright, TimeoutError
+from playwright.async_api import async_playwright, TimeoutError
 from io import BytesIO
 
 router = APIRouter()
@@ -11,7 +11,7 @@ async def grafana_dashboard(url: str = Query(..., description="Grafana 看板 UR
         # kiosk模式会隐藏：顶部导航 左侧菜单 用户菜单
         if not url.endswith("&kiosk"):
             url += "&kiosk"
-        with sync_playwright() as p:
+        with async_playwright() as p:
             browser = p.chromium.launch(headless=True)
 
             page = browser.new_page(
