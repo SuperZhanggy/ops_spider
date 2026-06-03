@@ -39,11 +39,8 @@ for logger_name in LOGGERS:
     logging_logger = logging.getLogger(logger_name)
     logging_logger.handlers = [InterceptHandler(level=LOGGING_LEVEL)]
 
-log_file_path = os.path.join(BASE_DIR, 'logs/wise.log')
-err_log_file_path = os.path.join(BASE_DIR, 'logs/wise.err.log')
-isolation_log_file_path = os.path.join(BASE_DIR, 'logs/isolation.log')  # 一键隔离日志
-port_mapping_log_file_path = os.path.join(BASE_DIR, 'logs/port_mapping.log')  # 端口映射日志
-interception_log_file_path = os.path.join(BASE_DIR, 'logs/interception.log')  # 风险拦截日志
+log_file_path = os.path.join(BASE_DIR, 'logs/ops_spider.log')
+err_log_file_path = os.path.join(BASE_DIR, 'logs/ops_spider.err.log')
 
 # 埋点日志格式化
 format_buried_logs = "<green>{time:YYYY-mm-dd HH:mm:ss.SSS}</green> <level>{message}</level>"
