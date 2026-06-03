@@ -2,8 +2,10 @@ import os
 import logging
 import uvicorn
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
+
+from api.deps import login_required
 from api.routes import screenshot, authentication
 from config.logging import InterceptHandler, configure_loguru
 
@@ -35,6 +37,7 @@ app.add_middleware(
 )
 
 app.include_router(authentication.router, prefix="/api/auth")
+# app.include_router(screenshot.router, prefix="/api/screenshot", dependencies=[Depends(login_required)])
 app.include_router(screenshot.router, prefix="/api/screenshot")
 
 
