@@ -15,49 +15,54 @@ HTTP_LISTEN_PORT: 8000
 # TOKEN 过期时间
 TOKEN_EXPIRE_DAYS: 7
 
+LDAP_SERVER_POOL: [ "ldap://10.10.x.x:389" ]  # proxy
+ADMIN_DN: "CN=glpi,OU=server account,DC=xxx,DC=com"
+ADMIN_PASSWORD: "xxxx"
+SEARCH_BASE: "DC=xxxxx,DC=com"
+
 # 开发环境
 DevelopmentConfig:
-  MYSQL_HOST: bj-cdb-o7k12jes.sql.tencentcdb.com
-  MYSQL_PORT: 61840
-  MYSQL_USER: work
-  MYSQL_PWD: wiwide@312312
-  MYSQL_DB: wise
+  MYSQL_HOST:
+  MYSQL_PORT:
+  MYSQL_USER:
+  MYSQL_PWD:
+  MYSQL_DB:
 
   # Redis配置
-  REDIS_HOST: 192.144.210.136
-  REDIS_PORT: 3807
-  REDIS_PWD: wiwide_redis_pass
-  REDIS_DB: 1
+  REDIS_HOST:
+  REDIS_PORT:
+  REDIS_PWD:
+  REDIS_DB:
 
 
 # 测试环境
 TestConfig:
-  MYSQL_HOST: bj-cdb-o7k12jes.sql.tencentcdb.com
-  MYSQL_PORT: 61840
-  MYSQL_USER: work
-  MYSQL_PWD: wiwide@312312
-  MYSQL_DB: wise
+  MYSQL_HOST:
+  MYSQL_PORT:
+  MYSQL_USER:
+  MYSQL_PWD:
+  MYSQL_DB:
 
   # Redis配置
-  REDIS_HOST: 192.144.210.136
-  REDIS_PORT: 3807
-  REDIS_PWD: wiwide_redis_pass
-  REDIS_DB: 1
+  REDIS_HOST:
+  REDIS_PORT:
+  REDIS_PWD:
+  REDIS_DB:
 
 
 # 生产环境
 ProductionConfig:
-  MYSQL_HOST: bj-cdb-o7k12jes.sql.tencentcdb.com
-  MYSQL_PORT: 61840
-  MYSQL_USER: work
-  MYSQL_PWD: wiwide@312312
-  MYSQL_DB: wise
+  MYSQL_HOST:
+  MYSQL_PORT:
+  MYSQL_USER:
+  MYSQL_PWD:
+  MYSQL_DB:
 
   # Redis配置
-  REDIS_HOST: 192.144.210.136
-  REDIS_PORT: 3807
-  REDIS_PWD: wiwide_redis_pass
-  REDIS_DB: 1
+  REDIS_HOST:
+  REDIS_PORT:
+  REDIS_PWD:
+  REDIS_DB:
 
 
 CurrentConfig: ProductionConfig
