@@ -332,6 +332,10 @@ defaults = {
     'REDIS_PASSWORD': '',
     'REDIS_DB_CELERY': 3,
     'REDIS_DB_CACHE': 12,
+
+    "API_KEYS": [
+        "uBw4MIoF15ebKd4p5mrTvhysprcpYJiCGqhmioUouS2vpPQB3" # 百秋运维管理平台
+    ]
 }
 
 

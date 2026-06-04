@@ -37,8 +37,7 @@ app.add_middleware(
 )
 
 app.include_router(authentication.router, prefix="/api/auth")
-# app.include_router(screenshot.router, prefix="/api/screenshot", dependencies=[Depends(login_required)])
-app.include_router(screenshot.router, prefix="/api/screenshot")
+app.include_router(screenshot.router, prefix="/api/screenshot", dependencies=[Depends(login_required)])
 
 
 @app.get("/health")
