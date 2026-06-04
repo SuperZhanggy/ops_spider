@@ -55,8 +55,8 @@ LDAP 登录，返回 JWT Token。
 
 ```json
 {
-  "username": "charlie.zhang2",
-  "password": "baiqiu123!@#"
+  "username": "xxxxxxxxxx",
+  "password": "xxxxxxxxxx"
 }
 ```
 
